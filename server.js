@@ -17,15 +17,18 @@ app.use(express.static(path.join(__dirname,'client/build')));
 app.use('/api',authRoutes);
 app.use('/api/todo',toDoRoutes);
 
-mongoose.connect(process.env.DB_URL).then((result)=>{
+mongoose.connect(process.env.DB_URL)
+  .then(() => {
     console.log("DB Connected Successfully!");
-}).catch(err=>{
-    console.log("Something Wrong?!", err);
-})
-
-app.listen(PORT,()=>{
-    console.log(`Server started at port ${PORT}`);
-})
+    
+    // Uruchamiamy serwer DOPIERO TUTAJ, wewnątrz .then()
+    app.listen(PORT, () => {
+      console.log(`Server started at port ${PORT}`);
+    });
+  })
+  .catch(err => {
+    console.error("Coś poszło nie tak z połączeniem do bazy!", err);
+  });
 
 
 
