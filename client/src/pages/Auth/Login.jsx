@@ -34,26 +34,28 @@ function Login() {
   }
   return (
     <div>
-      <div className={styles.login__card}>
+      <form className={styles.login__card}>
           <img src={login} alt=".."/>
           <h2>Login</h2>
           <div className={styles.input__wrapper}>
               <Input 
               placeholder="Username" 
               value={username} 
-              onChange={(e)=>setUsername(e.target.value)} />
+              onChange={(e)=>setUsername(e.target.value)}
+              autoComplete = "username" />
           </div>
           <div className={styles.input__wrapper}>
               <Input.Password 
               placeholder="Password" 
               value={password} 
-              onChange={(e)=>setPassword(e.target.value)} />
+              onChange={(e)=>setPassword(e.target.value)}
+              autoComplete = "current-password" />
           </div>
           <div className={styles.input__info}>
             New User? <Link to="/register">Register</Link>
            </div> 
            <Button loading={loading} type="primary" size="large" disabled={!username || !password} onClick={handleSubmit} >Login</Button>
-      </div>
+      </form>
     </div>
   )
 }
