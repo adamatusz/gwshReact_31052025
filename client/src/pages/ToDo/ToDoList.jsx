@@ -91,6 +91,8 @@ function ToDoList() {
 			setLoading(false);
 			message.success("To Do Task Added Successfully!");
 			setIsAdding(false); // Po prostu zamykamy modal
+			setTitle(""); // Wyczyść pole tytułu
+			setDescription("");
 			getAllToDo();
 		} catch (err) {
 			console.log(err);
@@ -298,7 +300,7 @@ function ToDoList() {
 					)}
 				</div>
 
-				{/* ZMIANA 5: Dodajemy atrybut afterClose do obu modali */}
+				{/* Dodajemy atrybut afterClose do obu modali */}
 				<Modal
 					confirmLoading={loading}
 					title='Add New To Do Task'
